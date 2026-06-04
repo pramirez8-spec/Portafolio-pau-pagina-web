@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paula Ramírez – Publicidad & Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hot: #E8197A;
+    --fuchsia: #C2185B;
+    --violet: #8B2FC9;
+    --deep: #4A0E8F;
+    --neon-purple: #A855F7;
+    --bg: #070412;
+    --surface: #0F0820;
+    --card: #160D2E;
+    --white: #F8F4FF;
+    --muted: #9B89BE;
+    --glow-pink: rgba(232,25,122,0.35);
+    --glow-purple: rgba(139,47,201,0.35);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:0; opacity:.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; align-items:center; justify-content:space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(7,4,18,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(232,25,122,0.12);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--white), var(--hot));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+  .nav-links a {
+    color: var(--muted); text-decoration:none;
+    font-size:.85rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
+    transition: color .3s;
+  }
+  .nav-links a:hover { color: var(--hot); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--hot), var(--violet));
+    color: var(--white) !important;
+    padding: .55rem 1.4rem; border-radius: 50px;
+    font-weight:600 !important; letter-spacing:1px !important;
+    box-shadow: 0 0 20px var(--glow-pink);
+    transition: box-shadow .3s !important;
+  }
+  .nav-cta:hover { box-shadow: 0 0 35px var(--glow-pink) !important; }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%; filter: blur(80px); pointer-events:none;
+  }
+  .orb1 { width:500px;height:500px; background:var(--glow-purple); top:-100px; right:100px; }
+  .orb2 { width:300px;height:300px; background:var(--glow-pink); bottom:50px; left:-50px; }
+  .orb3 { width:200px;height:200px; background:rgba(168,85,247,0.25); top:40%; right:30%; }
+
+  .hero-text { position:relative; z-index:2; }
+  .hero-tag {
+    display: inline-flex; align-items:center; gap:.5rem;
+    background: rgba(232,25,122,0.12);
+    border: 1px solid rgba(232,25,122,0.3);
+    padding: .4rem 1rem; border-radius:50px;
+    font-size:.75rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+    color: var(--hot); margin-bottom:1.5rem;
+  }
+  .hero-tag span { width:6px;height:6px; background:var(--hot); border-radius:50%; animation:pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 9vw, 7.5rem);
+    line-height: .95;
+    letter-spacing: 2px;
+  }
+  h1 .name-white { color: var(--white); display:block; }
+  h1 .name-gradient {
+    background: linear-gradient(135deg, var(--hot) 0%, var(--neon-purple) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    display:block;
+  }
+  .hero-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem; color: var(--neon-purple);
+    margin: .8rem 0 1.5rem;
+  }
+  .hero-desc {
+    color: var(--muted); font-size:1rem; line-height:1.7;
+    max-width: 420px; margin-bottom:2rem;
+  }
+  .hero-pills {
+    display:flex; gap:.8rem; flex-wrap:wrap; margin-bottom:2.5rem;
+  }
+  .pill {
+    padding: .35rem 1rem; border-radius:50px;
+    font-size:.8rem; font-weight:600; letter-spacing:1px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white); background: rgba(255,255,255,0.05);
+  }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--hot), var(--fuchsia));
+    color: var(--white); text-decoration:none;
+    padding: .85rem 2rem; border-radius:50px;
+    font-weight:700; font-size:.9rem; letter-spacing:1px;
+    box-shadow: 0 4px 30px var(--glow-pink);
+    transition: transform .2s, box-shadow .2s;
+    display:inline-flex; align-items:center; gap:.5rem;
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow: 0 8px 40px var(--glow-pink); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(232,25,122,0.5);
+    color: var(--white); text-decoration:none;
+    padding: .85rem 2rem; border-radius:50px;
+    font-weight:600; font-size:.9rem; letter-spacing:1px;
+    transition: border-color .2s, background .2s;
+    display:inline-flex; align-items:center; gap:.5rem;
+  }
+  .btn-outline:hover { border-color: var(--hot); background: rgba(232,25,122,.08); }
+
+  .hero-socials {
+    display:flex; gap:1rem; margin-top:2rem;
+  }
+  .social-icon {
+    width:40px;height:40px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.12);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--muted); text-decoration:none; font-size:.85rem;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .social-icon:hover { border-color:var(--hot); color:var(--hot); background:rgba(232,25,122,.1); }
+
+  .hero-image-wrap {
+    position:relative; z-index:2;
+    display:flex; justify-content:center; align-items:flex-end;
+  }
+  .hero-img-ring {
+    position:relative; width:420px; height:500px;
+  }
+  .ring {
+    position:absolute; border-radius:50%; border:1px solid rgba(232,25,122,0.2);
+  }
+  .ring1 { width:440px;height:440px; top:10px; left:-10px;
+    animation: spin 20s linear infinite; }
+  .ring2 { width:380px;height:380px; top:40px; left:20px;
+    border-color:rgba(168,85,247,0.2);
+    animation: spin 15s linear infinite reverse; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  .hero-img-glow {
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 80%, var(--glow-purple), transparent 70%);
+    border-radius:50% 50% 0 0; z-index:1;
+  }
+  .hero-photo {
+    position:relative; z-index:2;
+    width:100%; height:100%;
+    object-fit:cover; object-position: top center;
+    border-radius: 200px 200px 0 0;
+    filter: drop-shadow(0 0 40px rgba(139,47,201,0.5));
+  }
+  .hero-tools {
+    position:absolute; right:-60px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:.7rem; z-index:3;
+  }
+  .tool-badge {
+    width:44px; height:44px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.65rem; font-weight:700; letter-spacing:.5px;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .tool-ps { background:#001E36; color:#31A8FF; }
+  .tool-ai { background:#FF7C00; color:#2C1500; }
+  .tool-lr { background:#001A3A; color:#4FBBFE; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 4rem; position:relative; }
+  .section-label {
+    font-size:.75rem; font-weight:700; letter-spacing:3px;
+    text-transform:uppercase; color:var(--hot);
+    margin-bottom:.5rem;
+  }
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height:1; letter-spacing:2px;
+    margin-bottom:1rem;
+  }
+  .section-subtitle { color:var(--muted); max-width:500px; line-height:1.7; }
+  .section-header { margin-bottom:3.5rem; }
+  .divider {
+    width:60px; height:3px;
+    background: linear-gradient(90deg, var(--hot), var(--violet));
+    border-radius:2px; margin: 1rem 0;
+  }
+
+  /* ── SOBRE MÍ ── */
+  #sobre-mi { background: var(--surface); }
+  .sobre-grid {
+    display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; align-items:center;
+  }
+  .sobre-img-wrap { position:relative; }
+  .sobre-photo {
+    width:100%; border-radius:20px;
+    filter: saturate(1.1) contrast(1.05);
+    border: 1px solid rgba(232,25,122,0.2);
+  }
+  .sobre-badge {
+    position:absolute; bottom:-20px; right:-20px;
+    background: linear-gradient(135deg, var(--hot), var(--violet));
+    border-radius:16px; padding:1.2rem 1.5rem;
+    text-align:center; box-shadow:0 8px 30px var(--glow-pink);
+  }
+  .sobre-badge .num {
+    font-family:'Bebas Neue',sans-serif; font-size:2.5rem; line-height:1;
+  }
+  .sobre-badge .lbl { font-size:.7rem; opacity:.85; letter-spacing:1px; text-transform:uppercase; }
+  .sobre-text p { color:var(--muted); line-height:1.8; margin-bottom:1rem; }
+  .quote-block {
+    border-left:3px solid var(--hot); padding-left:1.2rem;
+    margin:1.5rem 0; font-style:italic; color:var(--neon-purple);
+    font-size:1.05rem;
+  }
+  .skill-bars { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
+  .skill-row { display:flex; flex-direction:column; gap:.4rem; }
+  .skill-info { display:flex; justify-content:space-between; font-size:.85rem; }
+  .skill-info span:first-child { font-weight:600; }
+  .skill-info span:last-child { color:var(--hot); font-weight:700; }
+  .bar-track {
+    height:6px; background:rgba(255,255,255,.08); border-radius:3px; overflow:hidden;
+  }
+  .bar-fill {
+    height:100%; border-radius:3px;
+    background: linear-gradient(90deg, var(--hot), var(--neon-purple));
+    box-shadow:0 0 10px var(--glow-pink);
+    animation: barGrow 1.5s ease forwards;
+    transform-origin: left;
+  }
+  @keyframes barGrow { from{width:0} }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--bg); }
+  .services-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem;
+  }
+  .service-card {
+    background: var(--card);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:20px; padding:2rem;
+    position:relative; overflow:hidden;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
+    cursor:default;
+  }
+  .service-card::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(135deg, rgba(232,25,122,.06), transparent);
+    opacity:0; transition:opacity .3s;
+  }
+  .service-card:hover { transform:translateY(-6px); border-color:rgba(232,25,122,.3); box-shadow:0 20px 60px rgba(0,0,0,.4); }
+  .service-card:hover::before { opacity:1; }
+  .service-icon {
+    width:54px; height:54px; border-radius:14px;
+    background: linear-gradient(135deg, rgba(232,25,122,.15), rgba(139,47,201,.15));
+    border:1px solid rgba(232,25,122,.2);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; margin-bottom:1.2rem;
+  }
+  .service-card h3 {
+    font-family:'Bebas Neue',sans-serif; font-size:1.5rem;
+    letter-spacing:1px; margin-bottom:.6rem;
+  }
+  .service-card h3 span { color:var(--hot); }
+  .service-card p { color:var(--muted); font-size:.9rem; line-height:1.6; }
+  .service-arrow {
+    position:absolute; bottom:1.5rem; right:1.5rem;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(232,25,122,.1); border:1px solid rgba(232,25,122,.2);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--hot); font-size:.9rem;
+    transition: background .3s;
+  }
+  .service-card:hover .service-arrow { background:var(--hot); color:var(--white); }
+
+  /* ── PORTAFOLIO ── */
+  #portafolio { background: var(--surface); }
+  .portfolio-grid {
+    display:grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto;
+    gap:1.2rem;
+  }
+  .port-item {
+    background:var(--card); border-radius:16px;
+    border:1px solid rgba(255,255,255,.06);
+    overflow:hidden; position:relative;
+    min-height:180px;
+    display:flex; align-items:flex-end;
+    transition: border-color .3s;
+  }
+  .port-item:hover { border-color:rgba(232,25,122,.3); }
+  .port-item:first-child { grid-row: span 2; min-height:380px; }
+  .port-bg {
+    position:absolute; inset:0;
+    background: linear-gradient(135deg, var(--deep), #1a0535);
+  }
+  .port-bg-2 { background: linear-gradient(135deg, #1a0535, var(--fuchsia)); }
+  .port-bg-3 { background: linear-gradient(135deg, #0d1a3a, var(--deep)); }
+  .port-bg-4 { background: linear-gradient(135deg, #2a0535, var(--deep)); }
+  .port-bg-5 { background: linear-gradient(135deg, var(--deep), #0a2040); }
+  .port-dots {
+    position:absolute; inset:0; opacity:.15;
+    background-image: radial-gradient(var(--hot) 1px, transparent 1px);
+    background-size:20px 20px;
+  }
+  .port-label {
+    position:relative; z-index:2;
+    padding:1.2rem 1.5rem; width:100%;
+    background: linear-gradient(to top, rgba(0,0,0,.8), transparent);
+  }
+  .port-cat {
+    font-size:.7rem; color:var(--hot); font-weight:700;
+    letter-spacing:2px; text-transform:uppercase; margin-bottom:.3rem;
+  }
+  .port-name { font-weight:700; font-size:1rem; }
+  .port-svg-icon {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-65%);
+    opacity:.35; z-index:1; transition:opacity .3s, transform .3s;
+  }
+  .port-item:hover .port-svg-icon { opacity:.6; transform:translate(-50%,-70%) scale(1.08); }
+  .port-tags { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:.4rem; }
+  .port-tag {
+    font-size:.6rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:.2rem .6rem; border-radius:50px;
+    background:rgba(232,25,122,.15); border:1px solid rgba(232,25,122,.3); color:var(--hot);
+  }
+  .port-desc { font-size:.78rem; color:var(--muted); line-height:1.5; margin-top:.3rem; }
+  .port-clickable { cursor:pointer; }
+  .port-has-img { background:#000; }
+  .port-real-img {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:center top;
+    transition:transform .5s, filter .4s;
+    filter:brightness(.7) saturate(1.1);
+    z-index:0;
+  }
+  .port-item:hover .port-real-img { transform:scale(1.06); filter:brightness(.45) saturate(1.3); }
+  .port-overlay {
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(to top, rgba(7,4,18,.95) 40%, rgba(7,4,18,.15) 100%);
+  }
+  .port-has-img .port-label { z-index:2; }
+  .port-has-img .port-btn { z-index:3; }
+  .port-btn {
+    position:absolute; top:1rem; right:1rem; z-index:3;
+    background:rgba(232,25,122,.12); border:1px solid rgba(232,25,122,.25);
+    color:var(--hot); font-size:.7rem; font-weight:700; letter-spacing:1px;
+    padding:.35rem .8rem; border-radius:50px;
+    transition:background .2s, color .2s;
+  }
+  .port-clickable:hover .port-btn { background:var(--hot); color:var(--white); }
+
+  /* ── PROCESO ── */
+  #proceso { background: var(--bg); }
+  .proceso-steps {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; position:relative;
+  }
+  .proceso-steps::before {
+    content:''; position:absolute; top:40px; left:12.5%; right:12.5%;
+    height:1px; background: linear-gradient(90deg, transparent, var(--hot), var(--neon-purple), transparent);
+  }
+  .step { text-align:center; padding:2rem 1rem; }
+  .step-num {
+    width:80px; height:80px; border-radius:50%; margin:0 auto 1.2rem;
+    background: var(--card); border:1px solid rgba(232,25,122,.2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bebas Neue',sans-serif; font-size:1.8rem;
+    position:relative;
+  }
+  .step:nth-child(1) .step-num { background:linear-gradient(135deg,rgba(232,25,122,.2),rgba(139,47,201,.2)); border-color:var(--hot); box-shadow:0 0 20px var(--glow-pink); }
+  .step-num span { color:var(--hot); }
+  .step h3 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:1px; margin-bottom:.5rem; }
+  .step p { color:var(--muted); font-size:.85rem; line-height:1.6; }
+
+  /* ── CONTACTO ── */
+  #contacto {
+    background: var(--surface);
+    text-align:center;
+  }
+  .contacto-inner { max-width:700px; margin:0 auto; }
+  .contacto-inner .section-title { font-size:clamp(3rem,6vw,5rem); }
+  .contacto-inner .section-subtitle { margin:0 auto 2.5rem; text-align:center; }
+  .contacto-data {
+    display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin:2.5rem 0;
+  }
+  .contact-item {
+    display:flex; align-items:center; gap:.7rem;
+    color:var(--muted); font-size:.9rem;
+  }
+  .contact-item .icon {
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(232,25,122,.1); border:1px solid rgba(232,25,122,.2);
+    display:flex; align-items:center; justify-content:center; color:var(--hot);
+    flex-shrink:0;
+  }
+  .contact-form {
+    background:var(--card); border-radius:24px; padding:2.5rem;
+    border:1px solid rgba(255,255,255,.06); text-align:left; margin-top:2rem;
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .form-group { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1rem; }
+  .form-group label { font-size:.8rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .form-group input, .form-group textarea {
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+    border-radius:10px; padding:.8rem 1rem; color:var(--white);
+    font-family:'Outfit',sans-serif; font-size:.9rem;
+    transition:border-color .2s;
+    outline:none;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color:var(--hot); }
+  .form-group textarea { resize:vertical; min-height:100px; }
+  .btn-submit {
+    width:100%; background:linear-gradient(135deg,var(--hot),var(--violet));
+    border:none; color:var(--white); padding:1rem;
+    border-radius:50px; font-family:'Outfit',sans-serif;
+    font-size:1rem; font-weight:700; letter-spacing:1px;
+    cursor:pointer; box-shadow:0 4px 30px var(--glow-pink);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn-submit:hover { transform:translateY(-2px); box-shadow:0 8px 40px var(--glow-pink); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--bg); border-top:1px solid rgba(255,255,255,.06);
+    padding:2rem 4rem; display:flex; align-items:center; justify-content:space-between;
+  }
+  .footer-logo {
+    font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:3px;
+    background:linear-gradient(135deg,var(--white),var(--hot));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .footer-copy { color:var(--muted); font-size:.8rem; }
+  .footer-socials { display:flex; gap:.8rem; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:900px){
+    nav { padding:1rem 1.5rem; }
+    .nav-links { display:none; }
+    #inicio { grid-template-columns:1fr; padding:7rem 1.5rem 3rem; }
+    .hero-image-wrap { display:none; }
+    section { padding:4rem 1.5rem; }
+    .sobre-grid { grid-template-columns:1fr; }
+    .services-grid { grid-template-columns:1fr; }
+    .portfolio-grid { grid-template-columns:1fr 1fr; }
+    .port-item:first-child { grid-row:auto; }
+    .proceso-steps { grid-template-columns:1fr 1fr; }
+    .form-row { grid-template-columns:1fr; }
+    footer { flex-direction:column; gap:1rem; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PR</div>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#portafolio">Portafolio</a></li>
+    <li><a href="#contacto" class="nav-cta">Contáctame →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-orb orb3"></div>
+
+  <div class="hero-text">
+    <div class="hero-tag">
+      <span></span> Disponible para proyectos
+    </div>
+    <h1>
+      <span class="name-white">PAULA</span>
+      <span class="name-gradient">RAMÍREZ</span>
+    </h1>
+    <p class="hero-sub">Publicidad &amp; Marketing</p>
+    <p class="hero-desc">
+      Estudiante de Publicidad y Marketing apasionada por la creatividad, las marcas
+      y las estrategias digitales. Transformo ideas en campañas visuales impactantes.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">✦ Creatividad</span>
+      <span class="pill">✦ Estrategia</span>
+      <span class="pill">✦ Diseño</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#portafolio" class="btn-primary">Ver Portafolio →</a>
+      <a href="#contacto" class="btn-outline">✉ Contáctame</a>
+    </div>
+    <div class="hero-socials">
+      <a href="#" class="social-icon">in</a>
+      <a href="#" class="social-icon">📷</a>
+      <a href="mailto:paulandrearago2418@gmail.com" class="social-icon">✉</a>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <div class="hero-img-ring">
+      <div class="ring ring1"></div>
+      <div class="ring ring2"></div>
+      <div class="hero-img-glow"></div>
+      <!-- Placeholder visual since we can't embed the uploaded photo in HTML output -->
+<img src="images/foto-paula.jpg" class="hero-photo" alt="Paula Ramírez">
+    </div>
+    <div class="hero-tools">
+      <div class="tool-badge tool-ps">Ps</div>
+      <div class="tool-badge tool-ai">Ai</div>
+      <div class="tool-badge tool-lr">Lr</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="sobre-grid">
+    <div class="sobre-img-wrap fade-up">
+<img src="images/foto-paula.jpg" class="sobre-photo" alt="Paula Ramírez" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;">
+      <div class="sobre-badge">
+        <div class="num">5</div>
+        <div class="lbl">Semestres</div>
+      </div>
+    </div>
+    <div class="sobre-text fade-up">
+      <div class="section-header">
+        <p class="section-label">— Sobre mí</p>
+        <h2 class="section-title">CREA · CONECTA · IMPACTA</h2>
+        <div class="divider"></div>
+      </div>
+      <p>
+        Soy <strong>Paula Andrea Ramírez Gómez</strong>, estudiante de Publicidad y Marketing Digital
+        de Bucaramanga con cuatro semestres cursando. Ya he trabajado con empresas
+        haciendo publicidad de forma empírica.
+      </p>
+      <p>
+        El ingenio, dinamismo, responsabilidad y compromiso son algunos de los atributos
+        que me destacan. Poseo un profundo sentido de la estética y un compromiso constante
+        con la mejora continua.
+      </p>
+      <div class="quote-block">
+        "Las marcas no solo se ven, también se sienten."
+      </div>
+      <div class="skill-bars">
+        <div class="skill-row">
+          <div class="skill-info"><span>Creatividad</span><span>95%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span>Diseño</span><span>85%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span>Marketing Digital</span><span>90%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span>Estrategia</span><span>80%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-header fade-up">
+    <p class="section-label">— Servicios</p>
+    <h2 class="section-title">¿QUÉ PUEDO HACER<br>POR TU MARCA?</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">Branding, diseño y estrategias digitales para potenciar tu identidad y conectar con tu audiencia.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <circle cx="27" cy="27" r="12" stroke="url(#sg1)" stroke-width="2.5" fill="none">
+            <animateTransform attributeName="transform" type="rotate" from="0 27 27" to="360 27 27" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="27" cy="15" r="4" fill="#E8197A"/>
+          <circle cx="38" cy="33" r="4" fill="#A855F7"/>
+          <circle cx="16" cy="33" r="4" fill="#E8197A"/>
+          <line x1="27" y1="19" x2="35" y2="30" stroke="url(#sg1)" stroke-width="1.5"/>
+          <line x1="27" y1="19" x2="19" y2="30" stroke="url(#sg1)" stroke-width="1.5"/>
+          <line x1="35" y1="30" x2="19" y2="30" stroke="url(#sg1)" stroke-width="1.5"/>
+          <defs>
+            <linearGradient id="sg1" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>SOCIAL <span>MEDIA</span></h3>
+      <p>Gestión de contenido y estrategias digitales para redes sociales que conectan y generan comunidad.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <path d="M10 38 Q20 10 27 27 Q34 44 44 16" stroke="url(#dg1)" stroke-width="2.5" stroke-linecap="round" fill="none">
+            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" fill="freeze"/>
+          </path>
+          <circle cx="10" cy="38" r="3" fill="#E8197A"/>
+          <circle cx="44" cy="16" r="3" fill="#A855F7"/>
+          <rect x="22" y="22" width="10" height="10" rx="2" stroke="url(#dg1)" stroke-width="1.5" fill="none" transform="rotate(15 27 27)"/>
+          <defs>
+            <linearGradient id="dg1" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>DISEÑO <span>PUBLICITARIO</span></h3>
+      <p>Piezas gráficas creativas y funcionales que comunican la esencia de tu marca y captan la atención.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <rect x="8" y="30" width="8" height="16" rx="2" fill="url(#mg1)">
+            <animate attributeName="height" values="4;16;4" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="42;30;42" dur="2s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="20" y="20" width="8" height="26" rx="2" fill="url(#mg1)">
+            <animate attributeName="height" values="6;26;6" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="40;20;40" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="32" y="12" width="8" height="34" rx="2" fill="url(#mg1)">
+            <animate attributeName="height" values="8;34;8" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="38;12;38" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+          </rect>
+          <path d="M8 28 L20 18 L32 10 L44 6" stroke="#A855F7" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 2"/>
+          <defs>
+            <linearGradient id="mg1" x1="0" y1="0" x2="0" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#A855F7"/><stop offset="1" stop-color="#E8197A"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>MARKETING <span>DIGITAL</span></h3>
+      <p>Estrategias digitales efectivas para posicionar tu marca, atraer clientes y lograr resultados reales.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <polygon points="27,8 31,21 44,21 34,29 38,42 27,34 16,42 20,29 10,21 23,21" fill="none" stroke="url(#bg1)" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="27" cy="27" r="5" fill="url(#bg1)">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>BRANDING &amp; <span>IDENTIDAD</span></h3>
+      <p>Construyo identidades visuales que cuentan historias auténticas y generan conexión emocional.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <rect x="8" y="14" width="30" height="22" rx="3" stroke="url(#vg1)" stroke-width="2" fill="none"/>
+          <polygon points="22,20 22,30 34,25" fill="url(#vg1)">
+            <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+          </polygon>
+          <path d="M38 20 L46 16 L46 32 L38 28" stroke="url(#vg1)" stroke-width="2" stroke-linejoin="round" fill="none"/>
+          <defs>
+            <linearGradient id="vg1" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>CONTENIDO <span>VISUAL</span></h3>
+      <p>Producción de contenido audiovisual y gráfico adaptado a cada plataforma y audiencia.</p>
+      <div class="service-arrow">→</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <circle cx="27" cy="27" r="18" stroke="rgba(168,85,247,0.3)" stroke-width="1.5"/>
+          <circle cx="27" cy="27" r="12" stroke="rgba(232,25,122,0.4)" stroke-width="1.5"/>
+          <circle cx="27" cy="27" r="6" stroke="url(#tg1)" stroke-width="2"/>
+          <circle cx="27" cy="27" r="2.5" fill="url(#tg1)">
+            <animate attributeName="r" values="2;4;2" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <line x1="27" y1="8" x2="27" y2="14" stroke="url(#tg1)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="27" y1="40" x2="27" y2="46" stroke="url(#tg1)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="8" y1="27" x2="14" y2="27" stroke="url(#tg1)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="40" y1="27" x2="46" y2="27" stroke="url(#tg1)" stroke-width="2" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="tg1" x1="0" y1="0" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h3>ESTRATEGIA <span>DE MARCA</span></h3>
+      <p>Planificación y desarrollo de estrategias orientadas a posicionar y hacer crecer tu marca.</p>
+      <div class="service-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio">
+  <div class="section-header fade-up">
+    <p class="section-label">— Portafolio</p>
+    <h2 class="section-title">PROYECTOS<br>DESTACADOS</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="portfolio-grid fade-up">
+
+    <!-- Proyecto 1 grande: Portafolio personal -->
+    <div class="port-item port-clickable">
+      <div class="port-bg"></div>
+      <div class="port-dots"></div>
+      <div class="port-svg-icon">
+        <svg viewBox="0 0 80 80" fill="none" width="70" height="70">
+          <rect x="8" y="12" width="64" height="44" rx="6" stroke="url(#p1g)" stroke-width="2" fill="rgba(232,25,122,0.08)"/>
+          <line x1="8" y1="24" x2="72" y2="24" stroke="url(#p1g)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="#E8197A"/>
+          <circle cx="27" cy="18" r="2.5" fill="#A855F7"/>
+          <circle cx="36" cy="18" r="2.5" fill="rgba(255,255,255,0.2)"/>
+          <rect x="16" y="32" width="20" height="16" rx="3" fill="rgba(232,25,122,0.2)" stroke="rgba(232,25,122,0.4)" stroke-width="1"/>
+          <rect x="44" y="32" width="20" height="6" rx="2" fill="rgba(168,85,247,0.2)" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+          <rect x="44" y="42" width="14" height="6" rx="2" fill="rgba(168,85,247,0.15)" stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
+          <rect x="20" y="60" width="40" height="8" rx="4" fill="rgba(232,25,122,0.3)" stroke="rgba(232,25,122,0.5)" stroke-width="1"/>
+          <defs><linearGradient id="p1g" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="#E8197A"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">HTML</span><span class="port-tag">CSS</span><span class="port-tag">UX/UI</span></div>
+        <p class="port-cat">Identidad Visual & Web</p>
+        <p class="port-name">Portafolio Personal — Paula Ramírez</p>
+        <p class="port-desc">Diseño y desarrollo de identidad visual completa: wireframe, paleta, tipografía y página web.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+    <!-- Proyecto 2: Flyer Arcángel -->
+    <div class="port-item port-clickable port-has-img" onclick="openModal('arca')">
+      <div class="port-overlay"></div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">Diseño</span><span class="port-tag">Evento</span></div>
+        <p class="port-cat">Diseño Publicitario</p>
+        <p class="port-name">Flyer — Arcángel "La Maravilla"</p>
+        <p class="port-desc">Pieza editorial para promoción de concierto con estética urbana oscura e impacto visual.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+    <!-- Proyecto 3: Flyer Perros Criollos -->
+    <div class="port-item port-clickable port-has-img" onclick="openModal('perros')">
+      <div class="port-overlay"></div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">Evento</span><span class="port-tag">Social Media</span></div>
+        <p class="port-cat">Diseño Publicitario</p>
+        <p class="port-name">Flyer — Perros Criollos Bucaramanga</p>
+        <p class="port-desc">Afiche digital para evento musical en el Auditorio Luis A. Calvo, identidad colorida y urbana.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+    <!-- Proyecto 4: Logo Detallitos Eternos -->
+    <div class="port-item port-clickable port-has-img" onclick="openModal('logo')">
+      <div class="port-overlay"></div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">Branding</span><span class="port-tag">Logo</span></div>
+        <p class="port-cat">Identidad de Marca</p>
+        <p class="port-name">Logo — Detallitos Eternos by Danna</p>
+        <p class="port-desc">Logotipo para emprendimiento de regalos con identidad femenina, elegante y romántica.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+    <!-- Proyecto 5: Portafolio PDF -->
+    <div class="port-item port-clickable port-has-img" onclick="openModal('port_pdf')">
+      <img class="port-real-img" src="images/portafolio-academico.png" alt="Portafolio Académico"/>
+      <div class="port-overlay"></div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">Portafolio</span><span class="port-tag">Académico</span></div>
+        <p class="port-cat">Diseño & Publicidad</p>
+        <p class="port-name">Portafolio Académico</p>
+        <p class="port-desc">Proyectos universitarios de Publicidad y Marketing Digital con enfoque creativo y estratégico.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+    <!-- Proyecto 6: Plan de Marketing -->
+    <div class="port-item port-clickable">
+      <div class="port-bg port-bg-5"></div>
+      <div class="port-dots"></div>
+      <div class="port-svg-icon">
+        <svg viewBox="0 0 80 80" fill="none" width="60" height="60">
+          <rect x="12" y="18" width="56" height="44" rx="5" stroke="url(#p5g)" stroke-width="2" fill="rgba(74,14,143,0.15)"/>
+          <line x1="12" y1="30" x2="68" y2="30" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <rect x="20" y="36" width="10" height="20" rx="2" fill="rgba(232,25,122,0.3)">
+            <animate attributeName="height" values="6;20;6" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="50;36;50" dur="2.5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="34" y="28" width="10" height="28" rx="2" fill="rgba(168,85,247,0.4)">
+            <animate attributeName="height" values="8;28;8" dur="2.5s" begin="0.4s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="48;28;48" dur="2.5s" begin="0.4s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="48" y="22" width="10" height="34" rx="2" fill="rgba(232,25,122,0.5)">
+            <animate attributeName="height" values="10;34;10" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="46;22;46" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+          </rect>
+          <defs><linearGradient id="p5g" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse"><stop stop-color="#A855F7"/><stop offset="1" stop-color="#E8197A"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="port-label">
+        <div class="port-tags"><span class="port-tag">Estrategia</span><span class="port-tag">Digital</span></div>
+        <p class="port-cat">Marketing Digital</p>
+        <p class="port-name">Plan de Marketing Digital</p>
+        <p class="port-desc">Estrategia digital con objetivos, métricas, segmentación y plan de contenidos mensual.</p>
+      </div>
+      <div class="port-btn">Ver proyecto →</div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="section-header fade-up" style="text-align:center;">
+    <p class="section-label" style="text-align:center;">— Proceso</p>
+    <h2 class="section-title">MI PROCESO DE TRABAJO</h2>
+    <div class="divider" style="margin:1rem auto;"></div>
+  </div>
+  <div class="proceso-steps">
+    <div class="step fade-up">
+      <div class="step-num"><span>01</span></div>
+      <h3>DESCUBRIR</h3>
+      <p>Entiendo tus objetivos, tu audiencia y el contexto de tu marca.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num"><span>02</span></div>
+      <h3>ESTRATEGIA</h3>
+      <p>Defino la estrategia creativa y el enfoque visual más efectivo.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num"><span>03</span></div>
+      <h3>DISEÑAR</h3>
+      <p>Creo piezas originales alineadas a la marca y la audiencia.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num"><span>04</span></div>
+      <h3>IMPLEMENTAR</h3>
+      <p>Entrego soluciones finales listas para conectar con tu mundo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <p class="section-label">— Contacto</p>
+    <h2 class="section-title">¿LISTA PARA<br>TRABAJAR JUNTAS?</h2>
+    <div class="divider" style="margin:1rem auto;"></div>
+    <p class="section-subtitle">Hagamos realidad tus ideas. Escríbeme y construyamos algo increíble.</p>
+    <div class="contacto-data">
+      <div class="contact-item"><div class="icon">✉</div> paulandrearago2418@gmail.com</div>
+      <div class="contact-item"><div class="icon">📞</div> +57 322 829 5867</div>
+      <div class="contact-item"><div class="icon">📍</div> Bucaramanga, Colombia</div>
+    </div>
+    <div class="contact-form fade-up">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="tu@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Asunto</label>
+        <input type="text" placeholder="¿En qué puedo ayudarte?">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntame sobre tu proyecto..."></textarea>
+      </div>
+      <button class="btn-submit">Enviar Mensaje ✉</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">PAULA RAMÍREZ</div>
+  <p class="footer-copy">© 2026 Paula Ramírez · Publicidad &amp; Marketing · ¡Lista para trabajar juntos! ♥</p>
+  <div class="footer-socials">
+    <a href="#" class="social-icon">in</a>
+    <a href="#" class="social-icon">📷</a>
+    <a href="mailto:paulandrearago2418@gmail.com" class="social-icon">✉</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<!-- MODAL VIEWER -->
+<div id="project-modal" class="modal-backdrop" onclick="closeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModalDirect()">&#x2715;</button>
+    <div class="modal-header">
+      <div class="modal-tags" id="modal-tags"></div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-desc" id="modal-desc"></p>
+    </div>
+    <div class="modal-img-wrap">
+      <img id="modal-img" src="" alt="" />
+    </div>
+  </div>
+</div>
+
+<style>
+.modal-backdrop {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(4,2,12,.93);
+  backdrop-filter:blur(18px);
+  align-items:center; justify-content:center;
+  padding:1.5rem;
+}
+.modal-backdrop.open { display:flex; animation:mFadeIn .25s ease; }
+@keyframes mFadeIn { from{opacity:0} to{opacity:1} }
+.modal-box {
+  background:var(--card);
+  border:1px solid rgba(232,25,122,.3);
+  border-radius:24px;
+  max-width:860px; width:100%;
+  max-height:90vh;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow:0 40px 100px rgba(0,0,0,.8), 0 0 80px rgba(232,25,122,.1);
+  animation:mSlideUp .3s ease;
+  position:relative;
+}
+@keyframes mSlideUp { from{transform:translateY(28px);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-close {
+  position:absolute; top:1rem; right:1rem; z-index:10;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.15);
+  color:var(--white); width:38px; height:38px; border-radius:50%;
+  font-size:1rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s, border-color .2s;
+  line-height:1;
+}
+.modal-close:hover { background:var(--hot); border-color:var(--hot); }
+.modal-header {
+  padding:1.8rem 2rem 1rem; flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.modal-tags { display:flex; gap:.5rem; margin-bottom:.7rem; flex-wrap:wrap; }
+.modal-tag {
+  font-size:.65rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  padding:.25rem .75rem; border-radius:50px;
+  background:rgba(232,25,122,.12); border:1px solid rgba(232,25,122,.3); color:var(--hot);
+}
+.modal-title {
+  font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:1px;
+  background:linear-gradient(135deg,#fff,#A855F7);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  margin-bottom:.4rem; line-height:1.1;
+}
+.modal-desc { color:#9B89BE; font-size:.9rem; line-height:1.6; }
+.modal-img-wrap {
+  flex:1; overflow-y:auto; padding:1.5rem 2rem 2rem;
+  display:flex; justify-content:center; align-items:flex-start;
+  background:rgba(0,0,0,.2);
+}
+.modal-img-wrap::-webkit-scrollbar { width:4px; }
+.modal-img-wrap::-webkit-scrollbar-thumb { background:rgba(232,25,122,.3); border-radius:2px; }
+#modal-img {
+  width:100%; max-width:680px; border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 50px rgba(0,0,0,.6);
+  display:block;
+}
+@media(max-width:600px){
+  .modal-header{ padding:1.2rem 1.2rem .8rem; }
+  .modal-img-wrap{ padding:1rem 1rem 1.5rem; }
+  .modal-title{ font-size:1.5rem; }
+}
+</style>
+
+<script>
+var projects = {
+  arca:{
+    title:'Flyer — Arcángel "La Maravilla"',
+    desc:'Pieza publicitaria para la promoción del concierto de Arcángel en Colombia. Diseño editorial oscuro con tipografía bold, composición de alto impacto visual y distribución de fechas.',
+    tags:['Diseño Publicitario','Evento','Social Media'],
+    img:'images/flyer-arcangel.png'
+  },
+  perros:{
+    title:'Flyer — Perros Criollos Bucaramanga',
+    desc:'Afiche digital para evento musical en el Auditorio Luis A. Calvo de Bucaramanga. Identidad visual colorida, juvenil y urbana con tipografía expresiva y personajes ilustrados.',
+    tags:['Diseño Publicitario','Evento','Social Media'],
+    img:'images/perros-criollos.png'
+  },
+  logo:{
+    title:'Logo — Detallitos Eternos by Danna',
+    desc:'Diseño de logotipo para emprendimiento de regalos y detalles. Identidad femenina y romántica con ilustración de osito, tipografía clásica y paleta en tonos rosa.',
+    tags:['Branding','Logo','Identidad Visual'],
+    img:'images/logo-detallitos.png'
+  },
+  port_pdf:{
+    title:'Portafolio Académico',
+    desc:'Portafolio universitario con proyectos de Publicidad y Marketing Digital. Refleja el proceso creativo, estratégico y visual desarrollado a lo largo de la carrera.',
+    tags:['Portafolio','Académico','Diseño'],
+    img:'images/portafolio-academico.png'
+  }
+};
+
+function openModal(id){
+  var p = projects[id];
+  if(!p) return;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-desc').textContent = p.desc;
+  document.getElementById('modal-img').src = p.img;
+  document.getElementById('modal-img').alt = p.title;
+  var tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = p.tags.map(function(t){return '<span class="modal-tag">'+t+'</span>';}).join('');
+  document.getElementById('project-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){
+  if(e.target===document.getElementById('project-modal')) closeModalDirect();
+}
+function closeModalDirect(){
+  document.getElementById('project-modal').classList.remove('open');
+  document.body.style.overflow='';
+  document.getElementById('modal-img').src='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeModalDirect();});
+</script>
+</body>
+</html>
